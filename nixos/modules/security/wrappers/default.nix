@@ -248,12 +248,6 @@ in
       export PATH="${wrapperDir}:$PATH"
     '';
 
-    security.apparmor.includes."nixos/security.wrappers" = ''
-      include "${pkgs.apparmorRulesFromClosure { name="security.wrappers"; } [
-        securityWrapper
-      ]}"
-    '';
-
     ###### wrappers activation script
     system.activationScripts.wrappers =
       lib.stringAfter [ "specialfs" "users" ]
