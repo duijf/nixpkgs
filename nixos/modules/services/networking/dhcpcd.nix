@@ -261,12 +261,6 @@ in
 
     environment.etc."dhcpcd.exit-hook".source = exitHook;
 
-    powerManagement.resumeCommands = mkIf config.systemd.services.dhcpcd.enable
-      ''
-        # Tell dhcpcd to rebind its interfaces if it's running.
-        /run/current-system/systemd/bin/systemctl reload dhcpcd.service
-      '';
-
   };
 
 }
